@@ -1,0 +1,32 @@
+{
+  "name": "SmartCv",
+  "version": "1.0.0",
+  "description": "this templates for all websites",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "JUST"
+  ],
+  "author": "Smart team ?",
+  "license": "ISC",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "method-override": "^3.0.0",
+    "moment": "^2.29.4",
+    "mongoose": "^5.13.22",
+    "nodemailer": "^6.9.13",
+    "nodemon": "^2.0.22",
+    "openai": "^4.47.1",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^8.0.0"
+  }
+}

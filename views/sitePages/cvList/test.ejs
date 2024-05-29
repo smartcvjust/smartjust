@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        certifications: [
+        {
+          certificationName: String,
+          issuingOrganization: String,
+          certificationDate: String,
+          expirationDate: String
+        }
+      ],
+    </p>
+    <%
+    var cvInfoPrompt = `
+      CV INFORMATION:
+      \n
+      Job Title: ${cv.personalInformation.jobTitle}
+      \n
+      Skills: ${cv.skills.skillList}
+      \n
+      Location: ${cv.personalInformation.address}
+
+      Education1: ${cv.education[0].degree} in ${cv.education[0].major} (Graduation Year: ${cv.education[0].graduationYear}) (Location: ${cv.education[0].location}) (Institution: ${cv.education[0].institution}) (Honors: ${cv.education[0].honors}) 
+      \n
+      ${(cv.education[1].degree && cv.education[1].major && cv.education[1].graduationYear && cv.education[1].location) ? 
+        `Education2: ${cv.education[1].degree} of ${cv.education[1].major} (Graduation Year: ${cv.education[1].graduationYear}) (Location: ${cv.education[1].location}) (Institution: ${cv.education[1].institution}) (Honors: ${cv.education[1].honors})` : ''}
+    
+        \n 
+        Experience1: ${cv.professionalExperience[0].jobTitle} in ${cv.professionalExperience[0].company} (Location: ${cv.professionalExperience[0].location}) (Employment Period: ${cv.professionalExperience[0].employmentPeriod}) (Responsibilities: ${cv.professionalExperience[0].responsibilities})  (Achievements: ${cv.professionalExperience[0].achievements}) 
+        \n
+        ${( cv.professionalExperience[1].jobTitle && cv.professionalExperience[1].company && cv.professionalExperience[1].location && cv.professionalExperience[1].responsibilities) ? 
+        `Experience1: ${cv.professionalExperience[1].jobTitle} in ${cv.professionalExperience[1].company} (Location: ${cv.professionalExperience[1].location}) (Employment Period: ${cv.professionalExperience[1].employmentPeriod}) (Responsibilities: ${cv.professionalExperience[1].responsibilities})  (Achievements: ${cv.professionalExperience[1].achievements})` : ''}
+    
+
+        \n 
+        Certifications1:  (Certification Name: ${cv.certifications[0].certificationName}) (Issuing Organization: ${cv.certifications[0].issuingOrganization}) (Certification Date: ${cv.certifications[0].certificationDate})  (Expiration Date: ${cv.certifications[0].expirationDate}) 
+        \n
+        ${( cv.certifications[1].certificationName && cv.certifications[1].issuingOrganization && cv.certifications[1].certificationDate && cv.certifications[1].expirationDate) ? 
+        `Certifications2:  (Certification Name: ${cv.certifications[1].certificationName}) (Issuing Organization: ${cv.certifications[1].issuingOrganization}) (Certification Date: ${cv.certifications[1].certificationDate})  (Expiration Date: ${cv.certifications[1].expirationDate})` : ''}
+    
+      \n
+     `;
+    %>
+    <textarea name="" style="width: 100%;" id="" cols="100" rows="100">
+        <%= cvInfoPrompt %>
+
+    </textarea>
+</body>
+</html>

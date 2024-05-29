@@ -1,0 +1,40 @@
+
+
+<%- include("../../partials/head.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center">
+            <img class="mb-4" src="https://res.cloudinary.com/smartcvmatching/image/upload/v1715523460/website-images/Smart_CV_hjydcz.svg" alt="" width="350" height="350">
+
+        </div>
+        <div class="col-6">
+            <main class="form-signin w-100 m-auto">
+                <form action="/verify" method="post"> 
+                 
+                  <h1 class="mb-4" style="color: #597CFF; font-weight: 800;">Verify Your Account</h1>
+                  <p class="lead" style="font-size: 0.85em;">A verification code has been sent to your email. Please check your inbox and enter the code below to verify your account. If you do not see the email, please check your spam or junk folder. Verifying your account helps us ensure the security and integrity of our platform. Thank you for your cooperation!</p>
+                  <div class="form-floating mt-4">
+                    <input type="text" required name="code" minlength="6" maxlength="6" class="form-control" id="floatingInput" placeholder="XXXXXX">
+                    <label for="floatingInput">Verification Code</label>
+                  </div>
+                 
+              
+                 
+                  <button class="btn btn-primary w-100 py-2 mt-4"  style="background-color: #597CFF; border-color: #597CFF" type="submit">Verify</button>
+                  
+                </form>
+                
+                <p class="mt-5 mb-3 text-body-secondary">&copy; Smart CV Matching - JUST Uni</p>
+              </main>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include("../../partials/footer.ejs") %>
+<%- include("../../partials/foot.ejs") %>

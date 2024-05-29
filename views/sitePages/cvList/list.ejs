@@ -1,0 +1,84 @@
+<%- include("../../partials/head.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+<style>
+    .display-2 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 1em;
+    }
+    h3 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 0.5em;
+    }
+    h4 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 0.5em;
+    }
+    .formButton {
+        background-color: #597CFF;
+        color: #fff;
+        font-weight: bold;
+        border-color: #597CFF;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <h1 class="display-2 mb-0">CV List</h1>
+            <a class="btn btn-primary py-2 px-4 formButton d-flex align-items-center" href="/new-cv">
+                
+                <svg style="margin-right: 11px;" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                </svg>
+                Create New CV
+            </a>
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <p class="lead px-2" style="color: lightgray;"><%= cvList.length %> CV Found</p>
+        </div>
+        <% if(cvList.length == 0) { %>
+            <p class="lead mt-5">
+                No CV has been added yet. Please create your CV to get personalized job recommendations.
+                <a class="mx-2" style="color: #597CFF; text-decoration: none; font-weight: bold;" href="/new-cv">Create</a>
+            </p>
+        <% } else { %>
+            <% cvList.forEach((cv, index) => { %>
+                <div class="col-6 mt-1 mb-4">
+                    <a href="/cv-details/<%= cv._id %>" style="text-decoration: none; color: #597CFF;">
+                        <div class="shadow rounded-5 py-3 px-4 d-flex align-items-center" style="position: relative;">
+                            <img width="100" src="https://res.cloudinary.com/smartcvmatching/image/upload/v1715626529/website-images/profile_cdwgja.png" alt="">
+                            <div class=" px-4">
+                                <div class=" d-flex justify-content-between align-items-center">
+                                    <h3 class="mb-1">CV #<%= index + 1 %></h3>
+                                    <h6 class="mb-1" style="color: rgb(229, 229, 229); font-weight: 200;"><strong>Created At:</strong>  <%= moment(cv.createdAt).format("DD/MM/YYYY") %></h6>
+                                </div>
+                                
+                                <h4 class="mb-1">RN: <%= cv._id %></h4>
+                            </div>
+                            <svg style="position: absolute; right: 25px; bottom: 30px" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+            <% }) %>
+        <% } %>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+<%- include("../../partials/footer.ejs") %>
+<%- include("../../partials/foot.ejs") %>

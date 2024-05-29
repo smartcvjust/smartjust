@@ -1,0 +1,384 @@
+<%- include("../../partials/head.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+
+
+<style>
+    .display-2 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 1em;
+    }
+    h1 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 1em;
+    }
+    h3 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 0.5em;
+    }
+    .formButton {
+        background-color: #597CFF;
+        color: #fff;
+        font-weight: bold;
+
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-5">
+          
+            <h1 class="display-2 mb-0">Edit CV Form</h1>
+        </div>
+        <div class="col-12">
+            <form action="/cv/edit/<%= cv._id %>?_method=PUT" method="post">
+                <div class="row">
+                    <div class="col-md-9 mt-5">
+                        <!-- Personal Information Section -->
+                       
+                           
+                        <section>
+                            <h1>Personal Information</h1>
+                            <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" name="fullName" class="form-control" id="fullName" value="<%= cv.personalInformation.fullName %>" placeholder="Enter your full name">
+                            </div>
+                            <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" required  name="email" class="form-control" id="email" value="<%= cv.personalInformation.email %>" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel"  name="phone" class="form-control" id="phone" value="<%= cv.personalInformation.phone %>" placeholder="Enter your phone number">
+                            </div>
+                            <div class="mb-3">
+                            <label for="dob" class="form-label">Date of Birth</label>
+                            <input type="text"  name="dob" class="form-control" value="<%= cv.personalInformation.dob %>" id="dob">
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" required name="address" class="form-control" id="address" value="<%= cv.personalInformation.address %>" placeholder="Enter your address">
+                            </div>
+                            <div class="mb-3">
+                            <label for="nationality" class="form-label">Nationality</label>
+                            <input type="text"  name="nationality" class="form-control" id="nationality" value="<%= cv.personalInformation.nationality %>" placeholder="Enter your nationality">
+                            </div>
+                            <div class="mb-3">
+                                <label for="jobTitle" class="form-label">Job Title</label>
+                                <input type="text"  name="jobTitle" class="form-control" id="jobTitle" value="<%= cv.personalInformation.jobTitle %>" placeholder="Enter your Job Title">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="website" class="form-label">Eebsite</label>
+                                    <input type="text"  name="website" class="form-control" id="website" value="<%= cv.personalInformation.website %>" placeholder="Enter your website">
+                                    </div>
+                            
+
+                        </section>
+                    </div>
+                    <div class="col-md-9 mt-5">
+                        <!-- Personal Information Section -->
+                        <section>
+                            <h1>Profile Bio</h1>
+                            <div class="mb-3">
+                            <label for="bio" class="form-label">Profile Bio</label>
+                            <textarea type="text" name="bio" rows="5" class="form-control" id="bio" placeholder="Enter profile bio text"><%= cv.bio %></textarea>
+                            </div>
+                            
+                           
+
+                        </section>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <!-- Professional Experience Section -->
+                        <section>
+                            <h1>Professional Experience</h1>
+                            <!-- Experience 1 -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Experience 1</h3>
+                                    <div class="experience mb-4">
+                                        <div class="mb-3">
+                                            <label for="jobTitle1" class="form-label">Job Title</label>
+                                            <input type="text"  name="jobTitle1" class="form-control" id="jobTitle1" value="<%= cv.professionalExperience[0].jobTitle %>" placeholder="Enter your job title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="company1" class="form-label">Company Name</label>
+                                            <input type="text"  name="company1" class="form-control" id="company1" value="<%= cv.professionalExperience[0].company %>" placeholder="Enter the company name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="location1" class="form-label">Location</label>
+                                            <input type="text"  name="EXlocation1" class="form-control" id="location1" value="<%= cv.professionalExperience[0].location %>" placeholder="Enter the location">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="employmentPeriod1" class="form-label">Employment Period</label>
+                                            <input type="text"  name="employmentPeriod1" class="form-control" id="employmentPeriod1" value="<%= cv.professionalExperience[0].employmentPeriod %>" placeholder="Enter employment period">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="responsibilities1" class="form-label">Responsibilities</label>
+                                            <textarea  name="responsibilities1" class="form-control" id="responsibilities1" rows="3" placeholder="Enter your responsibilities"><%= cv.professionalExperience[0].responsibilities %></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="achievements1" class="form-label">Achievements</label>
+                                            <textarea  name="achievements1" class="form-control" id="achievements1" rows="3" placeholder="Enter your achievements"><%= cv.professionalExperience[0].achievements %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Experience 2</h3>
+                                    <div class="experience mb-4">
+                                        <div class="mb-3">
+                                            <label for="jobTitle2" class="form-label">Job Title</label>
+                                            <input type="text"  name="jobTitle2" class="form-control" id="jobTitle2" value="<%= cv.professionalExperience[1].jobTitle %>" placeholder="Enter your job title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="company2" class="form-label">Company Name</label>
+                                            <input type="text"  name="company2" class="form-control" id="company2" value="<%= cv.professionalExperience[1].company %>" placeholder="Enter the company name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="location2" class="form-label">Location</label>
+                                            <input type="text"  name="EXlocation2" class="form-control" id="location2" value="<%= cv.professionalExperience[1].location %>" placeholder="Enter the location">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="employmentPeriod2" class="form-label">Employment Period</label>
+                                            <input type="text"  name="employmentPeriod2" class="form-control" id="employmentPeriod2" value="<%= cv.professionalExperience[1].employmentPeriod %>" placeholder="Enter employment period">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="responsibilities2" class="form-label">Responsibilities</label>
+                                            <textarea  name="responsibilities2" class="form-control" id="responsibilities2" rows="3" placeholder="Enter your responsibilities"><%= cv.professionalExperience[1].responsibilities %></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="achievements2" class="form-label">Achievements</label>
+                                            <textarea  name="achievements2" class="form-control" id="achievements2" rows="3" placeholder="Enter your achievements"><%= cv.professionalExperience[1].achievements %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Add more experiences with similar structure -->
+                        </section>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                         <!-- Education Section -->
+                        <section>
+                            <h1>Education</h1>
+                            <!-- Education 1 -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Education 1</h3>
+                                    <div class="education mb-4">
+                                        <div class="mb-3">
+                                            <label for="degree1" class="form-label">Degree/Certificate</label>
+                                            <input type="text"  name="degree1" class="form-control" id="degree1" value="<%= cv.education[0].degree %>" placeholder="Enter your degree/certificate">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="major1" class="form-label">Major/Area of Study</label>
+                                            <input type="text"  name="major1" class="form-control" id="major1" value="<%= cv.education[0].major %>" placeholder="Enter your major/area of study">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="institution1" class="form-label">Institution Name</label>
+                                            <input type="text"  name="institution1" class="form-control" id="institution1" value="<%= cv.education[0].institution %>" placeholder="Enter the institution name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="locationEdu1" class="form-label">Location</label>
+                                            <input type="text"  name="EDlocation1" class="form-control" id="locationEdu1" value="<%= cv.education[0].location %>" placeholder="Enter the location">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="graduationYear1" class="form-label">Graduation Year</label>
+                                            <input type="text"  name="graduationYear1" class="form-control" id="graduationYear1" value="<%= cv.education[0].graduationYear %>" placeholder="Enter graduation year">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="honors1" class="form-label">Honors/Awards</label>
+                                            <textarea  name="honors1" class="form-control" id="honors1" rows="3" placeholder="Enter your honors/awards"><%= cv.education[0].honors %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Education 2</h3>
+                                    <div class="education mb-4">
+                                        <div class="mb-3">
+                                            <label for="degree2" class="form-label">Degree/Certificate</label>
+                                            <input type="text"  name="degree2" class="form-control" id="degree2" value="<%= cv.education[1].degree %>" placeholder="Enter your degree/certificate">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="major2" class="form-label">Major/Area of Study</label>
+                                            <input type="text"  name="major2" class="form-control" id="major2" value="<%= cv.education[1].major %>" placeholder="Enter your major/area of study">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="institution2" class="form-label">Institution Name</label>
+                                            <input type="text"  name="institution2" class="form-control" id="institution2" value="<%= cv.education[1].institution %>" placeholder="Enter the institution name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="locationEdu2" class="form-label">Location</label>
+                                            <input type="text"  name="EDlocation2" class="form-control" id="locationEdu2" value="<%= cv.education[1].location %>" placeholder="Enter the location">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="graduationYear2" class="form-label">Graduation Year</label>
+                                            <input type="text"  name="graduationYear2" class="form-control" id="graduationYear2" value="<%= cv.education[1].graduationYear %>" placeholder="Enter graduation year">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="honors2" class="form-label">Honors/Awards</label>
+                                            <textarea  name="honors2" class="form-control" id="honors2" rows="3" placeholder="Enter your honors/awards"><%= cv.education[1].honors %></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Add more educations with similar structure -->
+                        </section>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <!-- Skills Section -->
+                        
+                        <section>
+                            <h1>Skills</h1>
+                            <div class="mb-3">
+                            <label for="skills" class="form-label">Skills</label>
+                            <input type="text"  name="skills" class="form-control" id="skills" value="<%= cv.skills.skillList.join(',') %>" placeholder="Enter your skills">
+                            </div>
+                            <!-- Add more skills fields as needed -->
+                        </section>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <!-- Certifications Section -->
+                        <section>
+                            <h1>Certifications</h1>
+                            <!-- Certification 1 -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Certification 1</h3>
+                                    <div class="certification mb-4">
+                                        <div class="mb-3">
+                                            <label for="certificationName1" class="form-label">Certification Name</label>
+                                            <input type="text"  name="certificationName1" class="form-control" id="certificationName1" value="<%= cv.certifications[0].certificationName %>" placeholder="Enter certification name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="issuingOrganization1" class="form-label">Issuing Organization</label>
+                                            <input type="text"  name="issuingOrganization1" class="form-control" id="issuingOrganization1" value="<%= cv.certifications[0].issuingOrganization %>" placeholder="Enter issuing organization">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="certificationDate1" class="form-label">Date Earned</label>
+                                            <input type="text"  name="certificationDate1" class="form-control" id="certificationDate1" value="<%= cv.certifications[0].certificationDate %>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="expirationDate1" class="form-label">Expiration Date</label>
+                                            <input type="text"  name="expirationDate1" class="form-control" id="expirationDate1" value="<%= cv.certifications[0].expirationDate %>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Certification 2</h3>
+                                    <div class="certification mb-4">
+                                        <div class="mb-3">
+                                            <label for="certificationName2" class="form-label">Certification Name</label>
+                                            <input type="text"  name="certificationName2" class="form-control" id="certificationName2" value="<%= cv.certifications[1].certificationName %>" placeholder="Enter certification name">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="issuingOrganization2" class="form-label">Issuing Organization</label>
+                                            <input type="text"  name="issuingOrganization2" class="form-control" id="issuingOrganization2" value="<%= cv.certifications[1].issuingOrganization %>" placeholder="Enter issuing organization">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="certificationDate2" class="form-label">Date Earned</label>
+                                            <input type="text"  name="certificationDate2" class="form-control" id="certificationDate2" value="<%= cv.certifications[1].certificationDate %>">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="expirationDate2" class="form-label">Expiration Date</label>
+                                            <input type="text"  name="expirationDate2" class="form-control" id="expirationDate2" value="<%= cv.certifications[1].expirationDate %>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                            <!-- Add more certifications with similar structure -->
+                        </section>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <!-- Projects Section -->
+                        <section>
+                            <h1>Projects</h1>
+                            <!-- Project 1 -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Project 1</h3>
+                                    <div class="project mb-4">
+                                        <div class="mb-3">
+                                            <label for="projectTitle1" class="form-label">Project Title</label>
+                                            <input type="text"  name="projectTitle1" class="form-control" id="projectTitle1" value="<%= cv.projects[0].projectTitle %>" placeholder="Enter project title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="projectDescription1" class="form-label">Project Description</label>
+                                            <textarea  name="projectDescription1" class="form-control" id="projectDescription1" rows="3" placeholder="Enter project description"><%= cv.projects[0].projectDescription %></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="projectRole1" class="form-label">Your Role</label>
+                                            <input type="text"  name="projectRole1" class="form-control" id="projectRole1" value="<%= cv.projects[0].projectRole %>" placeholder="Enter your role in the project">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="technologiesUsed1" class="form-label">Technologies Used</label>
+                                            <input type="text"  name="technologiesUsed1" class="form-control" id="technologiesUsed1" value="<%= cv.projects[0].technologiesUsed %>" placeholder="Enter technologies used">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Project 2</h3>
+                                    <div class="project mb-4">
+                                        <div class="mb-3">
+                                            <label for="projectTitle2" class="form-label">Project Title</label>
+                                            <input type="text"  name="projectTitle2" class="form-control" id="projectTitle2" value="<%= cv.projects[1].projectTitle %>" placeholder="Enter project title">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="projectDescription2" class="form-label">Project Description</label>
+                                            <textarea  name="projectDescription2" class="form-control" id="projectDescription2" rows="3" placeholder="Enter project description"><%= cv.projects[1].projectDescription %></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="projectRole2" class="form-label">Your Role</label>
+                                            <input type="text"  name="projectRole2" class="form-control" id="projectRole2" value="<%= cv.projects[1].projectRole %>" placeholder="Enter your role in the project">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="technologiesUsed2" class="form-label">Technologies Used</label>
+                                            <input type="text"  name="technologiesUsed2" class="form-control" id="technologiesUsed2" value="<%= cv.projects[1].technologiesUsed %>" placeholder="Enter technologies used">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more projects with similar structure -->
+                        </section>
+                    </div>
+                    <div class="col-md-12 mt-5">
+                        <!-- Interests/Hobbies Section -->
+                        <section>
+                            <h1>Interests/Hobbies</h1>
+                            <div class="mb-3">
+                            <label for="interestsHobbies" class="form-label">Interests/Hobbies</label>
+                            <textarea  name="interestsHobbies" class="form-control" id="interestsHobbies" rows="3" placeholder="Enter your interests/hobbies"><%= cv.interestsHobbies %></textarea>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="col-12 mt-5">
+                        <button class="btn btn-primary formButton w-100 py-3">Save</button>
+                    </div>
+                </div>
+               
+                
+               
+
+               
+
+                
+ 
+                
+                
+                  
+                
+                  
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include("../../partials/footer.ejs") %>
+<%- include("../../partials/foot.ejs") %>

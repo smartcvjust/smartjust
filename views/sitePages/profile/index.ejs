@@ -1,0 +1,150 @@
+<%- include("../../partials/head.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+<style>
+    .display-2 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 1em;
+    }
+    h3, h2 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 0.5em;
+    }
+    h4 {
+        font-weight: 700;
+        color: #597CFF;
+        margin-bottom: 0.5em;
+        font-size: 1.2em;
+    }
+    .formButton {
+        background-color: #597CFF;
+        color: #fff;
+        font-weight: bold;
+        border-color: #597CFF;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <h1 class="display-2 mb-0">Profile</h1>
+            <div class="d-flex">
+                <button class="btn mx-3 btn-primary py-2 px-4 formButton align-self-center"  data-bs-toggle="modal" data-bs-target="#exampleModal">Update Profile</button>
+                <button class="btn btn-primary py-2 px-4 formButton align-self-center"  data-bs-toggle="modal" data-bs-target="#changePassword">Update Password</button>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Your Information</h2>
+        </div>
+        <div class="col-6">
+            <h4 class="mb-1">Username</h4>
+            <p class="lead" style="color: lightgray;"><%= currentUser.username %></p>
+        </div>
+        <div class="col-6">
+            <h4 class="mb-1">Email</h4>
+            <p class="lead" style="color: lightgray;"><%= currentUser.email %></p>
+        </div>
+        <div class="col-6">
+            <h4 class="mb-1">Gender</h4>
+            <p class="lead" style="color: lightgray; text-transform: capitalize;"><%= currentUser.gender %></p>
+        </div>
+    </div>
+
+
+    <div class="my-5"></div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="mb-4">Your Activities</h2>
+        </div>
+        <div class="col-6">
+            <h4 class="mb-1">No. CV Added</h4>
+            <p class="lead" style="color: lightgray;"><%= cvList.length %></p>
+        </div>
+        
+    </div>
+</div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+         
+          <h2 class="mb-0">Update Profile</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <form action="/profile?_method=PUT" method="post">
+            <div class="form-floating mt-3">
+                <input type="text" required name="email" value="<%= currentUser.email %>" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email</label>
+              </div>
+              <div class="form-floating mt-3">
+                <select name="gender" required class="form-control" id="">
+                    <% if(currentUser.gender == 'male') { %>
+                        <option selected value="male">Male</option>
+                        <option value="female">Female</option>
+                    <% } else { %>
+                        <option value="male">Male</option>
+                        <option selected value="female">Female</option>
+                    <% } %>
+                    
+                </select>
+                <label for="floatingInput">Gender</label>
+              </div>
+            <button class="btn mt-4 btn-primary py-2 px-5 mb-4 formButton align-self-center">Save</button>
+
+         </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+   <!-- Modal -->
+   <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="changePasswordLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+         
+          <h2 class="mb-0">Update Password</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         <form action="/profile/change-password?_method=PUT" method="post">
+            <div class="form-floating mt-3">
+                <input type="password" required name="currentPassword" class="form-control" id="floatingcurrentPassword" placeholder="currentPassword">
+                <label for="floatingcurrentPassword">Current Password</label>
+              </div>
+             
+            <div class="form-floating mt-3">
+                <input type="password" required name="newPassword" class="form-control" id="floatingnewPassword" placeholder="newPassword">
+                <label for="floatingnewPassword">New Password</label>
+              </div>
+              <div class="form-floating mt-3">
+                <input type="password" required name="confirmPassword" class="form-control" id="floatingPassword" placeholder="Confirm Password">
+                <label for="floatingPassword">Confirm Password</label>
+              </div>
+              
+            <button class="btn mt-4 btn-primary py-2 px-5 mb-4 formButton align-self-center">Save</button>
+
+         </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+
+<%- include("../../partials/footer.ejs") %>
+<%- include("../../partials/foot.ejs") %>
